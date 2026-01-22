@@ -2,7 +2,9 @@
   <dictionary name="project">
     <words>
       <w>fondo</w>
+      <w>jugadores</w>
       <w>logosinfondo</w>
+      <w>skappname</w>
       <w>skcolor</w>
     </words>
   </dictionary>
