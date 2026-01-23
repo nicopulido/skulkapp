@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="skcolor">#CCA866</color>
+    <color name="hint_color">#A19589</color>
+    <color name="hint_bg_color">#60BDA27D</color>
+    <color name="hint_border_color">#80A18A68</color>
 </resources>
