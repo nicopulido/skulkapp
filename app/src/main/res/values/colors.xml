@@ -8,4 +8,7 @@
     <color name="hint_border_color">#80A18A68</color>
     <color name="red_add_player_color">#B00718</color>
     <color name="red_border_add_player_color">#820512</color>
+    <color name="star_button_color">#59D9AE</color>
+    <color name="star_button_color">#30AB81</color>
+
 </resources>
