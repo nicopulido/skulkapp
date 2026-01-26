@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/playersText"
         android:layout_width="121dp"
         android:layout_height="35dp"
         android:gravity="center_horizontal"
@@ -25,10 +25,10 @@
         app:layout_constraintVertical_bias="0.407" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/logo"
         android:layout_width="211dp"
         android:layout_height="162dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/playersText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/skullKingScorerText"
         android:layout_width="204dp"
         android:layout_height="36dp"
         android:layout_marginBottom="16dp"
@@ -49,14 +49,14 @@
         android:text="@string/skappname"
         android:textColor="@color/black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/enterNameEditText"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,26 +65,26 @@
         android:background="@drawable/edit_text_box_rounded"
         android:ems="10"
         android:gravity="center_vertical"
-        android:paddingHorizontal="5dp"
         android:hapticFeedbackEnabled="false"
         android:hint="@string/enter_name_text"
         android:inputType="text"
+        android:paddingHorizontal="5dp"
         android:text=""
         android:textColor="@color/black"
         android:textColorHint="@color/hint_color"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/playersText" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addPlayersButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/add_player_button"
-        app:layout_constraintStart_toEndOf="@+id/editTextText3"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/enterNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/playersText" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonStart"
@@ -102,6 +102,16 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+        android:id="@+id/listOfPlayers"
+        android:layout_width="374dp"
+        android:layout_height="211dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterNameEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
