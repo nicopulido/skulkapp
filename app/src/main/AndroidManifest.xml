@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FreeSkullKingScorer">
         <activity
+            android:name=".inPlayScreen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
