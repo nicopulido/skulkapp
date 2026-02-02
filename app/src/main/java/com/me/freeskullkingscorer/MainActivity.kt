@@ -2,7 +2,6 @@ package com.me.freeskullkingscorer
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val editText = findViewById<EditText>(R.id.enterNameEditText)
             val text = editText.text.toString()
             if(text.isNotEmpty()){
-                listItems.add(text)
+                listItems.add(0,text)
                 adapter.notifyDataSetChanged()
                 editText.text.clear()
             }
