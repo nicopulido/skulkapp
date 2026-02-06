@@ -7,5 +7,16 @@ data class Player(
     val playerName: String,
     //mutable player score
     var playerScore: Int = 0,
-    //mutable player position of the game
-)
+
+){
+
+    //methods to add or substract points to the player
+
+    fun addPoints(points : Int){
+        playerScore += points
+    }
+
+    fun substractPoints(points : Int){
+        playerScore -= points
+    }
+}
