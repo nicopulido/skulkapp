@@ -23,7 +23,7 @@ Allows:
 class MainActivity : AppCompatActivity() {
 
     //Not mutable list of players names
-    private var listItems = ArrayList<String>()
+    private var playerList = ArrayList<Player>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Configuration of listview and adapter
-        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,listItems)
+        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,playerList)
         val listView = findViewById<ListView>(R.id.listOfPlayers)
         listView.adapter = adapter
 
@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity() {
             val text = editText.text.toString()
             if(text.isNotEmpty()){
                 //adds a new player to the beginning of the list
-                listItems.add(0,text)
+                val player = Player(playerName = text)
+                playerList.add(0,player)
                 adapter.notifyDataSetChanged()
                 editText.text.clear()
             }
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         val startButton = findViewById<MaterialButton>(R.id.buttonStart)
         startButton.setOnClickListener {
             val intent : Intent = Intent(this, inPlayScreen::class.java)
+            val game = Game(players = playerList)
+            GameManager.startGame(game)
             startActivity(intent)
         }
 
