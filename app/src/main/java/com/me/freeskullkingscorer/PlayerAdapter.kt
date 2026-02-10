@@ -24,7 +24,8 @@ class PlayerAdapter(
         val nameText = view.findViewById<TextView>(R.id.playerNameListText)
         nameText.text = player.playerName
 
-        return super.getView(position, convertView, parent)
+        //returning my own view
+        return view
     }
 
 }

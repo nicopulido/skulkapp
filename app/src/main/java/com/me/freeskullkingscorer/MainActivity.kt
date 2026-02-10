@@ -2,7 +2,6 @@ package com.me.freeskullkingscorer
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
@@ -36,7 +35,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Configuration of listview and adapter
-        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,playerList)
+        //val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,playerList)
+        val adapter = PlayerAdapter(this, playerList)
         val listView = findViewById<ListView>(R.id.listOfPlayers)
         listView.adapter = adapter
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         //button to start the game
         val startButton = findViewById<MaterialButton>(R.id.buttonStart)
         startButton.setOnClickListener {
-            val intent : Intent = Intent(this, inPlayScreen::class.java)
+            val intent = Intent(this, inPlayScreen::class.java)
             val game = Game(players = playerList)
             GameManager.startGame(game)
             startActivity(intent)
