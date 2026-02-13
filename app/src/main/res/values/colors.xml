@@ -10,5 +10,7 @@
     <color name="red_border_add_player_color">#820512</color>
     <color name="star_button_color">#30AB81</color>
     <color name="star_button_border_color">#249168</color>
+    <color name="remove_player_button_color">#B04B07</color>
+    <color name="remove_player_button_border_color">#823705</color>
 
 </resources>
