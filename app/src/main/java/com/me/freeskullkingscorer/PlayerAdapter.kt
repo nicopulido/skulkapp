@@ -10,7 +10,7 @@ import android.widget.TextView
 class PlayerAdapter(
     context: Context,
     //source of real data
-    private val players: MutableList<Player>
+    private val players: List<Player>
 
 ) : ArrayAdapter<Player>(context, 0, players) {
 

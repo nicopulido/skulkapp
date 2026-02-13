@@ -3,17 +3,19 @@ package com.me.freeskullkingscorer
 
 //singleton of games
 object GameManager {
-    private var currentGame: Game? = null
+    private var currentGame: Game = Game()
 
     //initialize an instance of game
-    fun createGame() {
-        if (currentGame != null) {
-            throw IllegalStateException("Ya hay un juego activo")
-        }
-        currentGame = Game()
+
+    fun canStartGame(): Boolean{
+        return currentGame.players.size >= 2
     }
 
-    fun getGame(): Game {
-        return currentGame ?: throw IllegalStateException("No hay juego creado")
+    fun getPlayers(): List<Player>{
+        return currentGame.players
+    }
+
+    fun addPlayer(player: Player){
+        currentGame.addPlayer(player)
     }
 }
