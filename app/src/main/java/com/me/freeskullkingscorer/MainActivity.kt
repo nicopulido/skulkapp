@@ -31,8 +31,6 @@ class MainActivity : AppCompatActivity() {
 
 
         //creating the game of the instance
-        GameManager.createGame()
-        game = GameManager.getGame()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -41,10 +39,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Configuration of listview and adapter
-        //val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,game.players)
-        val adapter = PlayerAdapter(this, game.players)
+        //val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,GameManager.getPlayers())
+        val adapter = PlayerAdapter(this, GameManager.getPlayers())
         val listView = findViewById<ListView>(R.id.listOfPlayers)
         listView.adapter = adapter
+
+
+        //button to start the game
+        val startButton = findViewById<MaterialButton>(R.id.buttonStart)
+
+        startButton.isEnabled = GameManager.canStartGame()
+
+        startButton.setOnClickListener {
+            val intent = Intent(this, inPlayScreen::class.java)
+            startActivity(intent)
+        }
 
 
         //button to add a new player to the list
@@ -55,17 +64,11 @@ class MainActivity : AppCompatActivity() {
             if(text.isNotEmpty()){
                 //adds a new player to the beginning of the list
                 val player = Player(playerName = text)
-                game.players.add(0,player)
+                GameManager.addPlayer(player)
                 adapter.notifyDataSetChanged()
                 editText.text.clear()
+                startButton.isEnabled = GameManager.canStartGame()
             }
-        }
-
-        //button to start the game
-        val startButton = findViewById<MaterialButton>(R.id.buttonStart)
-        startButton.setOnClickListener {
-            val intent = Intent(this, inPlayScreen::class.java)
-            startActivity(intent)
         }
 
 
