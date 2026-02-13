@@ -21,13 +21,19 @@ Allows:
  */
 class MainActivity : AppCompatActivity() {
 
-    //Not mutable list of players names
-    private var playerList = ArrayList<Player>()
+    //game reference
+    lateinit var game : Game
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+
+        //creating the game of the instance
+        GameManager.createGame()
+        game = GameManager.getGame()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -35,8 +41,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Configuration of listview and adapter
-        //val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,playerList)
-        val adapter = PlayerAdapter(this, playerList)
+        //val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,game.players)
+        val adapter = PlayerAdapter(this, game.players)
         val listView = findViewById<ListView>(R.id.listOfPlayers)
         listView.adapter = adapter
 
@@ -49,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             if(text.isNotEmpty()){
                 //adds a new player to the beginning of the list
                 val player = Player(playerName = text)
-                playerList.add(0,player)
+                game.players.add(0,player)
                 adapter.notifyDataSetChanged()
                 editText.text.clear()
             }
@@ -59,8 +65,6 @@ class MainActivity : AppCompatActivity() {
         val startButton = findViewById<MaterialButton>(R.id.buttonStart)
         startButton.setOnClickListener {
             val intent = Intent(this, inPlayScreen::class.java)
-            val game = Game(players = playerList)
-            GameManager.startGame(game)
             startActivity(intent)
         }
 
