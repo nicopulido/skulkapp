@@ -21,9 +21,6 @@ Allows:
  */
 class MainActivity : AppCompatActivity() {
 
-    //game reference
-    lateinit var game : Game
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,15 +37,18 @@ class MainActivity : AppCompatActivity() {
 
         //Configuration of listview and adapter
         //val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,GameManager.getPlayers())
-        val adapter = PlayerAdapter(this, GameManager.getPlayers())
+        val adapter = PlayerAdapter(this)
         val listView = findViewById<ListView>(R.id.listOfPlayers)
         listView.adapter = adapter
 
 
         //button to start the game
         val startButton = findViewById<MaterialButton>(R.id.buttonStart)
-
         startButton.isEnabled = GameManager.canStartGame()
+        //button to add a new player to the list
+        val addPlayersButton = findViewById<ImageButton>(R.id.addPlayersButton)
+        //button to remove players from the list
+
 
         startButton.setOnClickListener {
             val intent = Intent(this, inPlayScreen::class.java)
@@ -56,8 +56,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        //button to add a new player to the list
-        val addPlayersButton = findViewById<ImageButton>(R.id.addPlayersButton)
         addPlayersButton.setOnClickListener {
             val editText = findViewById<EditText>(R.id.enterNameEditText)
             val text = editText.text.toString()
@@ -69,6 +67,11 @@ class MainActivity : AppCompatActivity() {
                 editText.text.clear()
                 startButton.isEnabled = GameManager.canStartGame()
             }
+        }
+
+        GameManager.getPlayersLiveData().observe(this){
+            startButton.isEnabled = GameManager.canStartGame()
+            adapter.notifyDataSetChanged()
         }
 
 

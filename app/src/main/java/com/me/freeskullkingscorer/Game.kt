@@ -15,12 +15,13 @@ data class Game(
     ){
 
     val players: List<Player>
-        get() = _players
+        get() = _players.toList()
 
     //methods to add and remove players
 
     fun addPlayer(player: Player){
         _players.add(0,player)
+
     }
 
     fun removePlayerByPosition(position: Int){
